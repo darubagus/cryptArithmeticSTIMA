@@ -5,10 +5,19 @@ import time
 use = [0 for i in range(10)]
 
 listOfWord = []
+listOfNode = []
+
 
 # MENGECEK APAKAH
+def isFirstZero(listOfWord, listOfNode, countChar):
+    # cari 0 di index pertama operand
+    for i in range(len(listOfWord)-1):
+        for j in range(countChar) :
+            if ((listOfNode[j][0] == listOfWord[i][0]) and (listOfNode[j][1] == 0)):
+                return True
 
-def isValid(listOfNode, count, listOfWord) :
+def isValid(listOfNode, countChar, listOfWord) :
+    global val 
     val = [0 for i in range(len(listOfWord))]
     temp = 0
     totalVal=0
@@ -18,7 +27,7 @@ def isValid(listOfNode, count, listOfWord) :
         i = len(listOfWord[z])-1
         while (i >= 0) :
             char = listOfWord[z][i]
-            for j in range(count) : 
+            for j in range(countChar) : 
                 temp = j
                 if (listOfNode[j][0] == char) :
                     break
@@ -30,7 +39,6 @@ def isValid(listOfNode, count, listOfWord) :
     for i in range(len(listOfWord)-1) :
         totalVal += val[i]
     
-
     if (totalVal == val[len(listOfWord)-1]) :
         return True
     else:
@@ -40,25 +48,24 @@ def isValid(listOfNode, count, listOfWord) :
 def Permutate(countChar, listOfNode, n, listOfWord, opCounter) :
     if (n == countChar-1): #Basis
         for i in range(10):
+            opCounter += 1
             if (use[i] == 0):
                 listOfNode[n][1] = i
                 if (isValid(listOfNode,countChar,listOfWord)) :
-                    print(listOfNode)
-                    print("Solusi ditemukan\n")
-                    # print letter and its corresponding value
+                    print("Jumlah operasi : "+str(opCounter))
                     return True
-        # return False
     else:
         for i in range(10):
+            opCounter += 1
             if (use[i]==0):
                 listOfNode[n][1] = i
                 use[i] = 1
-                if (Permutate(countChar,listOfNode, n+1,listOfWord)):
+                if (Permutate(countChar,listOfNode, n+1,listOfWord, opCounter) ):
                     return True
                 use[i] = 0
-        # return False # only for precaution
+        
 
-def problemSolver(listofWord):
+def problemSolver(listofWord,listOfNode):
     char = 0
     length = []
 
@@ -71,15 +78,12 @@ def problemSolver(listofWord):
         for j in range(len(listOfWord[i])):
             letterFrequency[ord(listOfWord[i][j]) - ord('A')] += 1
 
-    # SEND
-    # 
-
     for i in range(26):
         if (letterFrequency[i] > 0) :
             char +=1
     
     if (char > 10) :
-        # Invalid
+        # Operand terlalu banyak
         print("Invalid input")
     
     # listOfNode = [{letter, corresponding value}]
@@ -89,18 +93,55 @@ def problemSolver(listofWord):
         j = 0
         if (letterFrequency[i] > 0) :
             # listOfNode[j][0] = chr(i + ord('A'))
-            listOfNode.append([chr(i + ord('A')), 0])
+            listOfNode.append([chr(i + ord('A')), 9])
             j += 1
             # listOfNode.append([chr(i + ord('A')), 0])
         
     opCounter = 0
 
-    return Permutate(char, listOfNode, 0, listOfWord,opCounter)
+    return Permutate(char, listOfNode, 0, listOfWord, opCounter)
 
+def displayAngka() : 
+    for i in range(len(listOfWord)-1):
+        if (i != len(listOfWord)-2):
+            print(val[i])
+        else :
+            print(str(val[i])+"+")
+
+    length = (len(max(listOfWord, key=len))+1)
+    string = ''
+    for i in range(length) :
+        string += '-'
+    print(string)
+
+    print(val[len(listOfWord)-1])
+    print("\n")
+
+def displayWord(listOfWord):
+    for i in range(len(listOfWord)-1):
+        if (i != len(listOfWord)-2):
+            print(listOfWord[i])
+        else :
+            print(listOfWord[i]+"+")
+
+    length = (len(max(listOfWord, key=len)))
+    string = ''
+    for i in range(length) :
+        string += '-'
+    print(string)
+
+    print(listOfWord[len(listOfWord)-1])
+    print("\n")
+
+        
 
 #MAIN PROGRAM
 
 # open file
+fileName = input("Masukkan nama file :")
+problem = "../test/"+fileName+".txt"
+# inString = open(problem, "r")
+
 inString = open("input.txt", "r")
 line = inString.readlines()
 
@@ -118,8 +159,11 @@ inString.close()
 
 # START TIME
 startTime = time.time()
+problemSolver(listOfWord,listOfNode)
+# print(problemSolver(listOfWord))
 
-print(problemSolver(listOfWord))
+displayWord(listOfWord)
+displayAngka()
 # HITUNG RUNNING TIME
 runningTime = (time.time() - startTime)
 print(runningTime)
