@@ -9,6 +9,7 @@ listOfWord = []
 # MENGECEK APAKAH
 
 def isValid(listOfNode, count, listOfWord) :
+    global val
     val = [0 for i in range(len(listOfWord))]
     temp = 0
     totalVal=0
@@ -97,9 +98,42 @@ def problemSolver(listofWord):
 
     return Permutate(char, listOfNode, 0, listOfWord,opCounter)
 
+def displayAngka() : 
+    for i in range(len(listOfWord)-1):
+        if (i != len(listOfWord)-2):
+            print(val[i])
+        else :
+            print(str(val[i])+"+")
+
+    length = (len(max(listOfWord, key=len))+1)
+    string = ''
+    for i in range(length) :
+        string += '-'
+    print(string)
+
+    print(val[len(listOfWord)-1])
+    print("\n")
+
+def displayWord(listOfWord):
+    for i in range(len(listOfWord)-1):
+        if (i != len(listOfWord)-2):
+            print(listOfWord[i])
+        else :
+            print(listOfWord[i]+"+")
+
+    length = (len(max(listOfWord, key=len)))
+    string = ''
+    for i in range(length) :
+        string += '-'
+    print(string)
+
+    print(listOfWord[len(listOfWord)-1])
+    print("\n")
 
 #MAIN PROGRAM
-
+# fileName = input("Masukkan nama file :")
+# problem = "../test/"+fileName+".txt"
+# inString = open(problem, "r")
 # open file
 inString = open("input.txt", "r")
 line = inString.readlines()
@@ -120,6 +154,8 @@ inString.close()
 startTime = time.time()
 
 print(problemSolver(listOfWord))
+displayWord(listOfWord)
+displayAngka()
 # HITUNG RUNNING TIME
 runningTime = (time.time() - startTime)
 print(runningTime)
