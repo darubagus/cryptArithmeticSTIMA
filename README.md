@@ -16,6 +16,11 @@ Program ini dapat digunakan untuk menyelesaikan persoalan Cryptarithmetic dengan
 **LINK LAPORAN** <br />
 *http://bit.ly/BukanLaporanTucil1Stima*
 
+## Screenshot
+![Example screenshot](./doc/img/1.png)
+![Example screenshot](./doc/img/2.png)
+![Example screenshot](./doc/img/3.png)
+
 ### Build With
 
 - [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
