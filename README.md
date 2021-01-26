@@ -14,7 +14,7 @@ Program ini dibuat untuk memenuhi tugas Mata Kuliah **IF 2211 Strategi Algoritma
 Program ini dapat digunakan untuk menyelesaikan persoalan Cryptarithmetic dengan metode brute force
 
 **LINK LAPORAN** <br />
-*bit.ly/BukanLaporanALGEO*
+*http://bit.ly/BukanLaporanTucil1Stima*
 
 ### Build With
 
