@@ -8,12 +8,7 @@ listOfWord = []
 listOfNode = []
 
 
-def noLeadingZero(listOfWord):
-    noZero = []
-    for i in range(len(listOfWord)):
-        noZero.append(listOfWord[i][0])
-
-    return noZero
+# MENGECEK APAKAH
 
 def isValid(listOfNode, countChar, listOfWord) :
     global val 
@@ -42,7 +37,7 @@ def isValid(listOfNode, countChar, listOfWord) :
         return True
     else:
         return False
-
+    
 
 def Permutate(uniqueChar, listOfNode, n, listOfWord, opCounter) :
     if (n == uniqueChar-1):#Basis
@@ -82,8 +77,12 @@ def Permutate(uniqueChar, listOfNode, n, listOfWord, opCounter) :
                         return True
                     use[i] = 0
 
+def noLeadingZero(listOfWord):
+    noZero = []
+    for i in range(len(listOfWord)):
+        noZero.append(listOfWord[i][0])
 
-        
+    return noZero
 
 def problemSolver(listofWord,listOfNode):
     uniqueChar = 0
@@ -113,7 +112,7 @@ def problemSolver(listofWord,listOfNode):
         j = 0
         if (letterFrequency[i] > 0) :
             # listOfNode[j][0] = chr(i + ord('A'))
-            listOfNode.append([chr(i + ord('A')), 0])
+            listOfNode.append([chr(i + ord('A')), 9])
             j += 1
             # listOfNode.append([chr(i + ord('A')), 0])
         
@@ -124,51 +123,46 @@ def problemSolver(listofWord,listOfNode):
 def displayAngka() : 
     for i in range(len(listOfWord)-1):
         if (i != len(listOfWord)-2):
-            txt = str(val[i]).rjust(8)
-            print(txt)
+            print(val[i])
         else :
-            txt = str(val[i]).rjust(8)
-            print(txt+"+")
+            print(str(val[i])+"+")
 
-    length = (len(max(listOfWord, key=len)))
+    length = (len(max(listOfWord, key=len))+1)
     string = ''
     for i in range(length) :
         string += '-'
-    string = string.rjust(8)
     print(string)
 
-    txt = str(val[len(listOfWord)-1]).rjust(8)
-    print(txt)
+    print(val[len(listOfWord)-1])
     print("\n")
 
 def displayWord(listOfWord):
     for i in range(len(listOfWord)-1):
         if (i != len(listOfWord)-2):
-            txt = (listOfWord[i]).rjust(8)
-            print(txt)
+            print(listOfWord[i])
         else :
-            txt = (listOfWord[i]).rjust(8)
-            print(txt+"+")
+            print(listOfWord[i]+"+")
 
     length = (len(max(listOfWord, key=len)))
     string = ''
     for i in range(length) :
         string += '-'
-    string = string.rjust(8)
     print(string)
 
-    txt = (listOfWord[len(listOfWord)-1]).rjust(8)
-    print(txt)
+    print(listOfWord[len(listOfWord)-1])
     print("\n")
 
 #MAIN PROGRAM
+# fileName = input("Masukkan nama file :")
+# problem = "../test/"+fileName+".txt"
+# inString = open(problem, "r")
 
 # open file
-fileName = input("Masukkan nama file (sama extensionnya ya) :")
-problem = "../test/"+fileName
-inString = open(problem, "r")
+# fileName = input("Masukkan nama file :")
+# problem = "../test/"+fileName+".txt"
+# inString = open(problem, "r")
 
-# inString = open("../test/eleven.txt", "r")
+inString = open("../test/trouble.txt", "r")
 line = inString.readlines()
 
 i = 0
@@ -187,7 +181,6 @@ inString.close()
 startTime = time.time()
 problemSolver(listOfWord,listOfNode)
 # print(problemSolver(listOfWord))
-
 # print(problemSolver(listOfWord))
 displayWord(listOfWord)
 displayAngka()
