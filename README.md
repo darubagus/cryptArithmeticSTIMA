@@ -10,8 +10,9 @@ Program ini dibuat untuk memenuhi tugas Mata Kuliah **IF 2211 Strategi Algoritma
 
 
 ## Description
+Dalam menyelesaikan persoalan cryptArithmetic menggunakan metode brute force ini, digunakan *data structure* berupa array. Array digunakan untuk menyimpan operand, menyimpan karakter unik beserta *corresponding value-* nya untuk kemudian dicek kesesuaian antara problem dan hasilnya, serta menyimpan hasil dari persoalan yang diberikan.<br />
 
-Program ini dapat digunakan untuk menyelesaikan persoalan Cryptarithmetic dengan metode brute force
+Program ini dibuat menggunakan konsep permutasi, karena maksimum terdapat 10 huruf unik, maka terdapat 10! cara atau 3.628.800 buah cara untuk menyusun 10 angka yang merepresentasikan 10 buah huruf. Untuk kasus huruf unik yang berjumlah kurang dari 10, akan tetap dihasilkan 10! cara penyusunan angka tetapi hanya akan diambil sesuai dengan kebutuhan, hal tersebut menunjukkan bahwa berapapun jumlah hurufnya, akan tetap dihasilkan sebuah solusi meskipun tidak efisien karena ada proses *redundant* yang tetap dilakukan.<br />
 
 **LINK LAPORAN** <br />
 *http://bit.ly/BukanLaporanTucil1Stima*
