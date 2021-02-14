@@ -42,3 +42,5 @@ $ python3 crypArithmetic.py
 
 ## Author
 Daru Bagus Dananjaya (13519080)
+
+*Feel free to use my code, but don't forget to credit me. Cheers.*
